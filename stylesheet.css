@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -8,150 +13,201 @@ body::-webkit-scrollbar{
     display: none;
 }
 
-.logo {
-    height: 40px;
-    width: 40px;
-}
-
-nav {
+header {
+    margin: 0;
+    padding: 0;
+    width: 100%;
     position: fixed;
     top: 0;
-    width: 100vw;
+    background-color: white;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     z-index: 998;
-    border-bottom: 1px solid black;
-    backdrop-filter: blur(10px);
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: flex-end;
-    margin: 0;
-    padding: 0 5vw;
+header .logo {
+    padding: 0 0 0 20px;
+    height: 40px;
+    width: 40px;
+    transform-origin: 50% 50%;
 }
 
-nav li {
-    height: 50px;
+header .logo:hover {
+    animation: scale 1s linear infinite;
+}
+
+header .logo:hover .st2 {
+    stroke-dasharray: 10;
+}
+
+@keyframes scale {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}    
+
+header .navbar {
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 
-nav li:first-child {
-    margin-right: auto;
+header .navbar ul {
+    list-style: none;
 }
 
-nav a {
-    padding: 0 30px;
-    text-decoration: none;
-    display: flex;
-    justify-content: center;
+header .navbar ul li {
+    position: relative;
+    float: left;
+}
+
+header .navbar ul li a {
+    padding: 20px;
     color: black;
+    display: block;
+    text-decoration: none;
 }
 
-nav li:not(:first-child) a:hover {
+header .navbar ul li a:hover {
     color: white;
     background-color: black;
 }
 
-.sidebar {
-    padding: 0 5vw;
-    position: fixed;
-    top: 36px;
-    height: 100vh;
-    width: 100vw;
-    z-index: 999;
-    background-color: rgba(255, 255, 255, 0);
-    backdrop-filter: none;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    transform: translateY(2%);
-    opacity: 0;
-    transition: all 0.1s ease-out;
-
-    pointer-events: none;
-}
-
-.sidebar .opened {
-    opacity: 1;
-    pointer-events: all;
-}
-
-.menuButton {
+header .navbar ul li ul {
+    position: absolute;
+    left: 0;
+    background-color: white;
     display: none;
 }
 
-@media(max-width: 1200px) {
-    .hideOnMobile {
+header .navbar ul li ul li {
+    width: 100%;
+    border-top: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+header .navbar ul li:hover > ul {
+    display: initial;
+}
+
+#menu-bar {
+    display: none;
+}
+
+header label {
+    cursor: pointer;
+    display: none;
+}
+
+@media(max-width: 1200px){
+    header label {
+        display: initial;
+        padding: 20px;
+    }
+
+    header .navbar {
+        position: absolute;
+        top: 100%;
+        background-color: white;
+        border-top: 1px solid rgba(0, 0, 0, 0.4);
         display: none;
     }
 
-    .menuButton {
-        display: flex;
-        align-items: center;
+    header .navbar ul li {
+        width: 100vw;
     }
 
-    section {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav a:hover {
-        background-color: none;
+    header .navbar ul li ul {
+        position: relative;
+        width: 100vw;
     }
 }
 
-.videoContainer {
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
+#menu-bar:checked ~ .navbar {
+    display: initial;
 }
 
-section {
-    position: absolute;
-    height: 50vh;
-    width: 100vw;
-    top: 50%;
-    transform: translate(0%, -50%); 
-    display: flex;
-    justify-content: center;
-}
-
-article {
+.header2 {
+    margin: 65px 0 0 0;
+    background-color: #0066cc;
+    color: white;
+    text-align: center;
     padding: 20px;
-    margin: 20px 50px;
-    height: auto;
-    width: 75%;
-    border-radius: 10px;
-    background-color: white;
+}
+
+h1 {
+    font-size: 32px;
+}
+
+
+.container {
+    width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4);
-    transition: 0.3s;
 }
 
-article:hover {
-    scale: 1.05;
-    transition: 0.3s;
+.container img {
+    width: 65%;
 }
 
-article button {
+.cropped-image {
+    margin: 50px 0 0 0;
+    width: 100%;
+    height: 20vh;
+    object-fit: cover;
+}
+
+.container .detailsContainer {
     padding: 20px;
-    width: 40%;
+    margin: 20px 0;
+    width: calc(65% - 40px);
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.container .description {
+    width: 65%;
+}
+
+button {
+    padding: 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: blue;
     color: white;
-    background-color: black;
-    align-self: center;
-    border-radius: 10px;
     transition: 0.3s;
 }
 
-article button:hover {
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+button:hover {
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
     transition: 0.3s;
+}
+
+.container2 {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container2 .header, .container2 .💀 {
+    width: 65%;
+}
+
+.container2 .header {
+    margin: 20px 0;
+    font-size: 2rem;
+    font-weight: bold;
 }
 
 footer {
+    margin: 20px 0 0 0;
     color: white;
     background-color: black;
 }
@@ -168,8 +224,6 @@ footer .column {
 
 footer ul {
     list-style: none;
-    margin: 0;
-    padding: 0;
 }
 
 footer li:not(:last-child) {
